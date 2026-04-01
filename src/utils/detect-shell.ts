@@ -59,3 +59,17 @@ export function getPlatformName(): string {
   if (platform === 'win32') return 'Windows';
   return platform;
 }
+
+/**
+ * 获取详细平台信息（用于 LLM prompt）
+ */
+export function getDetailedPlatform(): string {
+  const platform = process.platform;
+  if (platform === 'darwin') return 'macOS (BSD-based, use macOS-specific commands like ifconfig, pbcopy, open)';
+  if (platform === 'linux') return 'Linux (use GNU coreutils, ip/hostname -I for network)';
+  if (platform === 'win32') {
+    if (process.env.MSYSTEM) return 'Windows Git Bash (MINGW, limited Linux command support)';
+    return 'Windows';
+  }
+  return platform;
+}

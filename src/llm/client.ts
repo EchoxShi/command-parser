@@ -1,5 +1,6 @@
 import OpenAI from 'openai';
 import { buildSystemPrompt, buildUserPrompt } from './prompts.js';
+import { getDetailedPlatform } from '../utils/detect-shell.js';
 import type { CommandResult, ShellType } from './types.js';
 
 const DANGEROUS_PATTERNS: Record<ShellType, RegExp[]> = {
@@ -70,7 +71,7 @@ export async function generateCommand(
     model: model || 'qwen-turbo',
     max_tokens: 512,
     messages: [
-      { role: 'system', content: buildSystemPrompt(shell) },
+      { role: 'system', content: buildSystemPrompt(shell, getDetailedPlatform()) },
       { role: 'user', content: buildUserPrompt(query) }
     ]
   });

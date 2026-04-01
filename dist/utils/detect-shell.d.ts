@@ -7,3 +7,7 @@ export declare function detectShell(): ShellType;
  * 获取平台友好名称
  */
 export declare function getPlatformName(): string;
+/**
+ * 获取详细平台信息（用于 LLM prompt）
+ */
+export declare function getDetailedPlatform(): string;

@@ -1,5 +1,6 @@
 import OpenAI from 'openai';
 import { buildSystemPrompt, buildUserPrompt } from './prompts.js';
+import { getDetailedPlatform } from '../utils/detect-shell.js';
 const DANGEROUS_PATTERNS = {
     powershell: [
         /Remove-Item.*-Recurse.*-Force/i,
@@ -58,7 +59,7 @@ export async function generateCommand(query, shell, apiKey, baseUrl, model) {
         model: model || 'qwen-turbo',
         max_tokens: 512,
         messages: [
-            { role: 'system', content: buildSystemPrompt(shell) },
+            { role: 'system', content: buildSystemPrompt(shell, getDetailedPlatform()) },
             { role: 'user', content: buildUserPrompt(query) }
         ]
     });
