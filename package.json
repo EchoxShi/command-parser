@@ -1,6 +1,6 @@
 {
   "name": "nlc-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Natural language to terminal command - AI-powered CLI tool",
   "type": "module",
   "main": "dist/index.js",
@@ -9,8 +9,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "dev": "npx tsx src/index.ts",
-    "prepare": "npm run build"
+    "dev": "npx tsx src/index.ts"
   },
   "keywords": [
     "cli",
