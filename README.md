@@ -7,7 +7,10 @@
 ## 安装
 
 ```bash
-npm install -g nlc-cli
+git clone https://github.com/EchoxShi/command-parser.git
+cd command-parser
+npm install
+npm link
 ```
 
 ## 快速开始
